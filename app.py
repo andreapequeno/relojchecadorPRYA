@@ -361,55 +361,6 @@ if seccion == "Analizar asistencia":
                     use_container_width=True
                 )
 
-            auto = detectar_columnas(raw)
-            cols = list(raw.columns)
-
-            st.subheader("Mapeo de columnas")
-
-            empleado_default = auto.get("empleado", cols[0])
-            tiempo_default = auto.get("tiempo", cols[0])
-
-            col_emp = st.selectbox(
-                "Columna del empleado",
-                cols,
-                index=(
-                    cols.index(empleado_default)
-                    if empleado_default in cols
-                    else 0
-                )
-            )
-
-            col_dt = st.selectbox(
-                "Columna de fecha y hora",
-                cols,
-                index=(
-                    cols.index(tiempo_default)
-                    if tiempo_default in cols
-                    else 0
-                )
-            )
-
-            col_id = st.selectbox(
-                "ID del empleado (opcional)",
-                ["-- No usar --"] + cols,
-                index=(
-                    cols.index(auto["id"]) + 1
-                    if auto.get("id") in cols
-                    else 0
-                )
-            )
-
-            avisos, errores = validar_base(
-                raw,
-                col_emp,
-                col_dt
-            )
-
-            for error in errores:
-                st.error(error)
-
-            for aviso in avisos:
-                st.warning(aviso)
 
             vac = None
             fest = None
