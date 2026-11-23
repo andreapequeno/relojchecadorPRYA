@@ -62,16 +62,10 @@ with st.sidebar:
         value=int(cfg["tolerancia_minutos"])
     )
 
-    medio_salida = st.time_input(
-        "Hora esperada de salida en medio día",
-        value=cfg["medio_dia_hora_salida"]
-    )
-
     cfg.update(
         hora_entrada=entrada,
         hora_salida=salida,
         tolerancia_minutos=tolerancia,
-        medio_dia_hora_salida=medio_salida
     )
 
     st.info(
